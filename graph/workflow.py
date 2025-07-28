@@ -1,3 +1,5 @@
+from typing import Optional
+
 from langgraph.graph import StateGraph, START, END, MessagesState
 # from langgraph.prebuilt import ToolNode, tools_condition
 # from langchain_core.tools import tool
@@ -10,8 +12,9 @@ from modules.router.router_node import chatbot_call_router, route_decision # rou
 from modules.planner.plan_node import planner_node
 from modules.general_chat.supervisor.supervisor_node import wrap_general_supervisor, get_next # supervisor
 from modules.general_chat.node import wrap_math_agent, wrap_travel_agent
+from langgraph.checkpoint.memory import InMemorySaver
 
-def graph_workflow():
+def graph_workflow(checkpoint: Optional[InMemorySaver] = None):
     workflow = StateGraph(PlanExecute)
 
     workflow.add_node("chatbot_call_router", chatbot_call_router)
@@ -60,6 +63,6 @@ def graph_workflow():
     #     True: "Planner"  # 재계획
     # })
 
-    app = workflow.compile()
+    app = workflow.compile(checkpointer=checkpoint)
 
     return app

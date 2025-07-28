@@ -17,7 +17,6 @@ class PlanExecute(TypedDict):
     messages: Annotated[List[BaseMessage], add_messages]
     agents: List[str]
     next: str
-    tool_count: int
     is_last_step: Annotated[IsLastStep, "last step"] = field(default=False)
     """
     # PlanExecute에서 필드 정리

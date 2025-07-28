@@ -18,7 +18,8 @@ def chatbot_call_router(state: PlanExecute):
     decision = router.invoke(
         [
             SystemMessage(content=router_prompt),
-            HumanMessage(content=state["input"]),
+            # HumanMessage(content=state["input"]),
+            *state["messages"]
         ]
     )
 
@@ -26,6 +27,7 @@ def chatbot_call_router(state: PlanExecute):
 
 def route_decision(state: PlanExecute):
     print(f"Log.. {state['route_chatbot']}으로 라우팅.")
+    # return "route_general" # test
 
     # Return the node name you want to visit next
     if state["route_chatbot"] == "report":

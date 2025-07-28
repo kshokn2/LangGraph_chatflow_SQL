@@ -9,5 +9,3 @@ llm = ChatGoogleGenerativeAI(
         # client_options={"timeout": 60.0}, # LLM 호출 시 타임아웃 설정 (예: 60초)
         # streaming=True # 스트리밍을 사용하면 invoke의 결과 처리 방식이 달라질 수 있어 주의
 )
-
-checkpointer = InMemorySaver()

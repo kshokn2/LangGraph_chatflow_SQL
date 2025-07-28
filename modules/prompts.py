@@ -1,3 +1,6 @@
+persona_prompt = """
+"""
+
 # Report Supervisor prompts
 report_supervisor_prompt = """
 You are a supervisor tasked with managing a conversation between the following workers: {members}.

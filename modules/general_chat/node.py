@@ -32,12 +32,15 @@ def wrap_travel_agent(state: PlanExecute):
     # supervisor_dict: dict[str, Any] = config.sub_configs.get("supervisor",{})
     # supervisor_config = RunnableConfig(**supervisor_dict)
 
-    result = travel_agent.invoke({
-        "messages": [
-            HumanMessage(content=state["input"]),
-        ]},
-        # config=supervisor_config
-    )
+    # result = travel_agent.invoke({
+    #     "messages": [
+    #         HumanMessage(content=state["input"]),
+    #     ]},
+    #     # config=supervisor_config
+    # )
+    
+    result = math_agent.invoke(state)
+
     print("wrap_travel_agent 출력:", result)
     # print(result['messages'][-1].content)
     print("============== tool 종료 ==============\n")
@@ -49,18 +52,21 @@ def wrap_math_agent(state: PlanExecute):
     # from langchain_core.runnables import RunnableConfig
     # from typing import Annotated, Any
 
-    # print("wrap_math_agent", state)
+    print("wrap_math_agent의 input(state):", state)
 
     # supervisor_dict: dict[str, Any] = config.sub_configs.get("supervisor",{})
     # supervisor_config = RunnableConfig(**supervisor_dict)
 
-    result = math_agent.invoke({
-        "messages": [
-            HumanMessage(content=state["input"]),
-        ]},
-        # config=supervisor_config
-    )
-    print("wrap_travel_agent 출력:", result)
+    # result = math_agent.invoke({
+    #     "messages": [
+    #         HumanMessage(content=state["input"]),
+    #     ]},
+    #     # config=supervisor_config
+    # )
+
+    result = math_agent.invoke(state)
+
+    print("wrap_math_agent 출력:", result)
     # print(result['messages'][-1].content)
     print("============== tool 종료 ==============\n")
     return {"messages": [result['messages'][-1]]}

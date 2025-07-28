@@ -7,3 +7,6 @@ route_options_for_next = ["FINISH"] + general_tool_list
 
 class RouteResponse(BaseModel):
     next: Literal[*route_options_for_next]
+    reason: str
+    question: str
+    agent_response: str

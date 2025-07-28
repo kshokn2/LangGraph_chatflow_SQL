@@ -20,3 +20,6 @@ api key들의 설정에 대해서
 
 planner 하기 전 supervisor까지 테스트 파일: my_agent_test.ipynb   
 planner된 테스트 파일: my_agent_test_0714.ipynb
+
+### streamlit 테스트
+streamlit run streamlit_app.py
